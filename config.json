@@ -1,36 +1,36 @@
 {
-   "log": {
-     "loglevel": "warning"
-   },
-   "inbounds": [
-     {
-       "tag": "trojan-ws",
-       "port": 10001,
-       "listen": "127.0.0.1",
-       "protocol": "trojan",
-       "settings": {
-         "clients": [
-           {
-             "password": "mydocker"
-           }
-         ]
-       },
-       "sniffing": {
-         "enabled": true,
-         "destOverride": ["http", "tls"]
-       },
-       "streamSettings": {
-         "network": "ws",
-         "wsSettings": {
-           "path": "/jonathan-docker"
-         }
-       }
-     }
-   ],
-   "outbounds": [
-     {
-       "protocol": "freedom",
-       "tag": "direct"
-     }
-   ]
- }
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "trojan-ws",
+      "port": 10001,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "mydocker"
+          }
+        ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/jonathan-docker"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    }
+  ]
+}
