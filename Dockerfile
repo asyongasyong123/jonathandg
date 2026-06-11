@@ -5,12 +5,13 @@ RUN apk add --no-cache \
     unzip \
     ca-certificates
 
-# ✅ Gi-update nga bersyon sa Xray
-ARG XRAY_VERSION=1.8.25
+# Bersyon nga sigurado nga naa
+ARG XRAY_VERSION=1.8.24
 
 WORKDIR /tmp
 
-RUN curl -L https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip -o xray.zip && \
+# Sigurado nga link
+RUN curl -fL "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip" -o xray.zip && \
     unzip xray.zip && \
     chmod +x xray && \
     mv xray /usr/local/bin/xray && \
@@ -30,8 +31,7 @@ COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
 COPY config.json /etc/xray.json
 
-RUN chmod +x /entrypoint.sh && \
-    chmod +x /usr/local/bin/xray
+RUN chmod +x /entrypoint.sh /usr/local/bin/xray
 
 EXPOSE 8080
 
