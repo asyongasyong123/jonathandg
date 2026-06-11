@@ -1,12 +1,15 @@
 #!/bin/sh
 set -e
 
-sed -i "s|listen.*;|listen ${PORT:-8080};|g" /usr/local/openresty/nginx/conf/nginx.conf
+PORT=${PORT:-8080}
 
-sed -i "s|listen ${PORT:-8080};|listen 0.0.0.0:${PORT:-8080};|g" /usr/local/openresty/nginx/conf/nginx.conf
+echo "Using PORT=$PORT"
 
-echo "Starting services on port: ${PORT:-8080}"
+xray test -c /etc/xray.json
 
-openresty -g 'daemon off;' &
+sed -i "s/__PORT__/${PORT}/g" \
+/usr/local/openresty/nginx/conf/nginx.conf
 
-exec xray run -c /etc/xray.json
+xray run -c /etc/xray.json &
+
+exec openresty -g 'daemon off;'
