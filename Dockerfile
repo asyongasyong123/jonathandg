@@ -35,7 +35,6 @@ RUN chmod +x /usr/local/bin/xray && \
 
 Env 8080
 Env Domain=www.google.com
-
 EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
