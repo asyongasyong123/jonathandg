@@ -11,92 +11,65 @@
       "settings": {
         "clients": [
           {
-            "password": "jonathandocker"
+            "password": "newbielangako"
           }
         ]
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
-        "routeOnly": true
+        "metadataOnly": false
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/trojan-jonathan"
-        }
-      }
-    },
-    {
-      "tag": "vmess-ws",
-      "port": 10002,
-      "listen": "127.0.0.1",
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "162062f0-65ff-11f1-ab07-0242ac120002",
-            "alterId": 0,
-            "security": "auto"
-          }
-        ]
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"],
-        "routeOnly": true
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/vmess-jonathan"
+          "path": "/trojan-jonathan?ed=2180"
         }
       }
     },
     {
       "tag": "vless-ws",
-      "port": 10003,
+      "port": 10002,
       "listen": "127.0.0.1",
       "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "id": "162062f0-65ff-11f1-ab07-0242ac120002",
-            "flow": ""
+            "id": "15f7e8ea-7b56-45d4-93af-31f3c592fdf1",
+            "level": 0,
+            "email": "vless-jonathan"
           }
         ],
         "decryption": "none"
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
-        "routeOnly": true
+        "metadataOnly": false
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vless-jonathan"
+          "path": "/vless-jonathan?ed=2180"
         }
       }
     },
     {
-      "tag": "ss-ws",
-      "port": 10004,
+      "tag": "ss-hu",
+      "port": 11004,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
-        "password": "jonathandocker"
+        "password": "newbielangako",
+        "network": "tcp,udp"
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
-        "routeOnly": true
+        "metadataOnly": false
       },
       "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/ss-jonathan"
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/httpupgrade-jonathan?ed=2180"
         }
       }
     }
