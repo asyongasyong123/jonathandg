@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-# Gamita ang port gikan sa Cloud Run o 8080 kung wala
+# Gamita ang port nga gihatag sa Cloud Run, kung wala 8080 ang gamiton
 PORT=${PORT:-8080}
 
-# Ilisan ang port sa nginx config
-sed -i "s/listen 8080;/listen $PORT;/g" /usr/local/openresty/nginx/conf/nginx.conf
+# Ilisan ang port sa nginx config aron motugma sa $PORT
+sed -i "s|listen 8080;|listen ${PORT};|g" /usr/local/openresty/nginx/conf/nginx.conf
 
 # Sugdi ang Xray ug OpenResty
 xray run -c /etc/xray.json &
