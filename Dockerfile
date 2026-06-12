@@ -1,16 +1,10 @@
-FROM alpine:3.19 AS xray-bin
+FROM alpine:3.19 AS xray-builder
 
-RUN apk add --no-cache \
-    curl \
-    unzip \
-    ca-certificates \
-    bash
+RUN apk add --no-cache curl unzip ca-certificates
+WORKDIR /app
 
-WORKDIR /tmp
-
-ARG XRAY_VERSION=1.8.23
-
-RUN curl -fL "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip" -o xray.zip && \
+RUN set -e && \
+    curl -fL https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip -o xray.zip && \
     unzip xray.zip && \
     chmod +x xray && \
     mv xray /usr/local/bin/xray && \
@@ -18,23 +12,15 @@ RUN curl -fL "https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSIO
 
 FROM openresty/openresty:alpine-fat
 
-RUN apk add --no-cache \
-    ca-certificates \
-    bash \
-    curl \
-    tzdata
+RUN apk add --no-cache ca-certificates bash tzdata
 
-COPY --from=xray-bin /usr/local/bin/xray /usr/local/bin/xray
+COPY --from=xray-builder /usr/local/bin/xray /usr/local/bin/xray
 
 COPY config.json /etc/xray.json
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /usr/local/bin/xray && \
-    chmod +x /entrypoint.sh
-
-ENV PORT=8080
-ENV DOMAIN=www.google.com
+RUN chmod +x /usr/local/bin/xray /entrypoint.sh
 
 EXPOSE 8080
 
