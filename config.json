@@ -18,8 +18,7 @@
       "sniffing": {
         "enabled": true,
         "destOverride": ["http", "tls"],
-        "domainsExcluded": [],
-        "routeOnly": false
+        "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
@@ -45,8 +44,7 @@
       "sniffing": {
         "enabled": true,
         "destOverride": ["http", "tls"],
-        "domainsExcluded": [],
-        "routeOnly": false
+        "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
@@ -72,8 +70,7 @@
       "sniffing": {
         "enabled": true,
         "destOverride": ["http", "tls"],
-        "domainsExcluded": [],
-        "routeOnly": false
+        "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
@@ -94,8 +91,7 @@
       "sniffing": {
         "enabled": true,
         "destOverride": ["http", "tls"],
-        "domainsExcluded": [],
-        "routeOnly": false
+        "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
@@ -108,10 +104,7 @@
   "outbounds": [
     {
       "protocol": "freedom",
-      "tag": "direct",
-      "settings": {
-        "domainStrategy": "UseIP"
-      }
+      "tag": "direct"
     }
   ]
 }
