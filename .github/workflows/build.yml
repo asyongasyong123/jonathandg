@@ -25,4 +25,3 @@ jobs:
           push: true
           tags: pantasyongbayan/ws:latest
           platforms: linux/amd64
-          
