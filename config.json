@@ -5,8 +5,8 @@
   "inbounds": [
     {
       "tag": "trojan-ws",
-      "port": 10001,
-      "listen": "127.0.0.1",
+      "port": "{{env "PORT"}}",
+      "listen": "0.0.0.0",
       "protocol": "trojan",
       "settings": {
         "clients": [
