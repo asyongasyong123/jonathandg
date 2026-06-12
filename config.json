@@ -1,83 +1,171 @@
+banner "CREATING CONFIG.JSON"
+
+cat > config.json <<EOF
 {
   "log": {
     "loglevel": "warning"
   },
+
   "inbounds": [
+
     {
-      "tag": "trojan-ws",
       "port": 10001,
       "listen": "127.0.0.1",
       "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "password": "newbielangako"
+            "password": "JonathanTrWS69"
           }
         ]
-      },
-      "sniffing": {
-        "enabled": true,
-        "metadataOnly": false
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/trojan-jonathan?ed=2180"
+          "path": "/JonathanTrWS?ed=2560"
         }
       }
     },
+
     {
-      "tag": "vless-ws",
       "port": 10002,
       "listen": "127.0.0.1",
       "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "id": "15f7e8ea-7b56-45d4-93af-31f3c592fdf1",
-            "level": 0,
-            "email": "vless-jonathan"
+            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b"
           }
         ],
         "decryption": "none"
       },
-      "sniffing": {
-        "enabled": true,
-        "metadataOnly": false
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/JonathanVlWS?ed=2560"
+        }
+      }
+    },
+
+    {
+      "port": 10003,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc",
+            "alterId": 0
+          }
+        ]
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vless-jonathan?ed=2180"
+          "path": "/JonathanVmWS?ed=2560"
         }
       }
     },
+
     {
-      "tag": "ss-hu",
+      "port": 10004,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-ietf-poly1305",
+        "password": "JonathanSsWS69",
+        "network": "tcp,udp"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/JonathanSsWS?ed=2560"
+        }
+      }
+    },
+
+    {
+      "port": 11001,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "JonathanTrHU69"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/JonathanTrHU?ed=2560"
+        }
+      }
+    },
+
+    {
+      "port": 11002,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/JonathanVlHU?ed=2560"
+        }
+      }
+    },
+
+    {
+      "port": 11003,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc",
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "httpupgradeSettings": {
+          "path": "/JonathanVmHU?ed=2560"
+        }
+      }
+    },
+
+    {
       "port": 11004,
       "listen": "127.0.0.1",
       "protocol": "shadowsocks",
       "settings": {
         "method": "chacha20-ietf-poly1305",
-        "password": "newbielangako",
+        "password": "JonathanSsHU69",
         "network": "tcp,udp"
-      },
-      "sniffing": {
-        "enabled": true,
-        "metadataOnly": false
       },
       "streamSettings": {
         "network": "httpupgrade",
         "httpupgradeSettings": {
-          "path": "/httpupgrade-jonathan?ed=2180"
+          "path": "/JonathanSsHU?ed=2560"
         }
       }
     }
+
   ],
+
   "outbounds": [
     {
-      "protocol": "freedom",
-      "tag": "direct"
+      "protocol": "freedom"
     }
   ]
 }
+EOF
