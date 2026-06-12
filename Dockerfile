@@ -6,7 +6,7 @@ RUN apk add --no-cache \
     ca-certificates
 
 # Bersyon nga sigurado nga naa
-ARG XRAY_VERSION=1.8.24
+ARG XRAY_VERSION=1.8.23
 
 WORKDIR /tmp
 
