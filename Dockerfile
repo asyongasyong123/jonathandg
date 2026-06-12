@@ -33,6 +33,9 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /usr/local/bin/xray && \
     chmod +x /entrypoint.sh
 
+Env 8080
+Env Domain=www.google.com
+
 EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
