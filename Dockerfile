@@ -23,6 +23,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /usr/local/bin/xray /entrypoint.sh
 
 ENV PORT=8080
-EXPOSE ${PORT}
+EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
