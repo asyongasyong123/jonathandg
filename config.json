@@ -34,7 +34,7 @@
       "settings": {
         "clients": [
           {
-            "id": "jonathandocker",
+            "id": "162062f0-65ff-11f1-ab07-0242ac120002",
             "alterId": 0,
             "security": "auto"
           }
@@ -59,7 +59,7 @@
       "settings": {
         "clients": [
           {
-            "id": "jonathandocker",
+            "id": "162062f0-65ff-11f1-ab07-0242ac120002",
             "flow": ""
           }
         ],
