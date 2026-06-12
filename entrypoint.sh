@@ -1,21 +1,12 @@
 #!/bin/sh
 set -e
 
-# Start xray in background and capture PID
-/usr/local/bin/xray run -c /etc/xray.json &
-XRAY_PID=$!
+# Gamita ang port gikan sa Cloud Run o 8080 kung wala
+PORT=${PORT:-8080}
 
-# Ensure xray is stopped on TERM/INT
-_term() {
-  echo "Stopping xray (pid $XRAY_PID) ..."
-  kill -TERM "$XRAY_PID" 2>/dev/null || true
-  wait "$XRAY_PID" 2>/dev/null || true
-  exit 0
-}
-trap _term TERM INT
+# Ilisan ang port sa nginx config
+sed -i "s/listen 8080;/listen $PORT;/g" /usr/local/openresty/nginx/conf/nginx.conf
 
-# Give xray a moment to initialize
-sleep 2
-
-# Start openresty in foreground as PID 1
-exec /usr/local/openresty/bin/openresty -g 'daemon off;'
+# Sugdi ang Xray ug OpenResty
+xray run -c /etc/xray.json &
+exec /usr/local/openresty/bin/openresty -g "daemon off;"
