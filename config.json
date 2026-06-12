@@ -5,9 +5,7 @@ cat > config.json <<EOF
   "log": {
     "loglevel": "warning"
   },
-
   "inbounds": [
-
     {
       "port": 10001,
       "listen": "127.0.0.1",
@@ -15,9 +13,14 @@ cat > config.json <<EOF
       "settings": {
         "clients": [
           {
-            "password": "JonathanTrWS69"
+            "password": "JonathanTrWS69",
+            "level": 0
           }
         ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "ws",
@@ -26,7 +29,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 10002,
       "listen": "127.0.0.1",
@@ -34,10 +36,15 @@ cat > config.json <<EOF
       "settings": {
         "clients": [
           {
-            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b"
+            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b",
+            "level": 0
           }
         ],
         "decryption": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "ws",
@@ -46,7 +53,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 10003,
       "listen": "127.0.0.1",
@@ -55,9 +61,14 @@ cat > config.json <<EOF
         "clients": [
           {
             "id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc",
-            "alterId": 0
+            "alterId": 0,
+            "level": 0
           }
         ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "ws",
@@ -66,7 +77,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 10004,
       "listen": "127.0.0.1",
@@ -76,6 +86,10 @@ cat > config.json <<EOF
         "password": "JonathanSsWS69",
         "network": "tcp,udp"
       },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
@@ -83,7 +97,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 11001,
       "listen": "127.0.0.1",
@@ -91,9 +104,14 @@ cat > config.json <<EOF
       "settings": {
         "clients": [
           {
-            "password": "JonathanTrHU69"
+            "password": "JonathanTrHU69",
+            "level": 0
           }
         ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "httpupgrade",
@@ -102,7 +120,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 11002,
       "listen": "127.0.0.1",
@@ -110,10 +127,15 @@ cat > config.json <<EOF
       "settings": {
         "clients": [
           {
-            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b"
+            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b",
+            "level": 0
           }
         ],
         "decryption": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "httpupgrade",
@@ -122,7 +144,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 11003,
       "listen": "127.0.0.1",
@@ -131,9 +152,14 @@ cat > config.json <<EOF
         "clients": [
           {
             "id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc",
-            "alterId": 0
+            "alterId": 0,
+            "level": 0
           }
         ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "httpupgrade",
@@ -142,7 +168,6 @@ cat > config.json <<EOF
         }
       }
     },
-
     {
       "port": 11004,
       "listen": "127.0.0.1",
@@ -152,6 +177,10 @@ cat > config.json <<EOF
         "password": "JonathanSsHU69",
         "network": "tcp,udp"
       },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
       "streamSettings": {
         "network": "httpupgrade",
         "httpupgradeSettings": {
@@ -159,12 +188,11 @@ cat > config.json <<EOF
         }
       }
     }
-
   ],
-
   "outbounds": [
     {
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "tag": "direct"
     }
   ]
 }
