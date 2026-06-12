@@ -5,13 +5,13 @@
   "inbounds": [
     {
       "tag": "trojan-ws",
-      "port": "{{env "PORT"}}",
-      "listen": "0.0.0.0",
+      "port": 10001,
+      "listen": "127.0.0.1",
       "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "password": "mydocker"
+            "password": "jonathandocker"
           }
         ]
       },
@@ -22,7 +22,77 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/jonathan-docker"
+          "path": "/trojan-jonathan"
+        }
+      }
+    },
+    {
+      "tag": "vmess-ws",
+      "port": 10002,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "jonathandocker",
+            "alterId": 0,
+            "security": "auto"
+          }
+        ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vmess-jonathan"
+        }
+      }
+    },
+    {
+      "tag": "vless-ws",
+      "port": 10003,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "jonathandocker",
+            "flow": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vless-jonathan"
+        }
+      }
+    },
+    {
+      "tag": "ss-ws",
+      "port": 10004,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "chacha20-ietf-poly1305",
+        "password": "jonathandocker"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/ss-jonathan"
         }
       }
     }
